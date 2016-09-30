@@ -92,6 +92,17 @@ class core_pdo {
 		}
 		return $result;
 	}
+
+	public function exec ($sql)
+	{
+		$this->query_log($sql);
+		$result = $this->db->exec($sql);
+		if (!$result and $this->show_error)
+		{
+			$this->error('Query Error :');
+		}
+		return $result;
+	}
 	
 	public function query_first ($sql)
 	{
